@@ -16,6 +16,8 @@ class _RegisterPageState extends State<RegisterPage> {
   String? email;
   String? name;
   String? phone;
+  bool _obscureText1 = true;
+  bool _obscureText2 = true;
   String? password;
   String? conpswd;
   @override
@@ -97,17 +99,24 @@ class _RegisterPageState extends State<RegisterPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 15.0),
                     child: TextField(
-                      obscureText: true,
+                      obscureText: _obscureText1,
                       onChanged: (String? value) {
                         password = value;
                       },
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'Password',
-                        prefixIcon: Image(
+                        prefixIcon: const Image(
                           image: AssetImage('assets/Icon ionic-ios-lock.png'),
                         ),
-                        suffixIcon: Image(
-                          image: AssetImage('assets/Icon awesome-eye.png'),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _obscureText1 = !_obscureText1;
+                            });
+                          },
+                          child: const Image(
+                            image: AssetImage('assets/Icon awesome-eye.png'),
+                          ),
                         ),
                       ),
                     ),
@@ -115,17 +124,24 @@ class _RegisterPageState extends State<RegisterPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 15.0),
                     child: TextField(
-                      obscureText: true,
+                      obscureText: _obscureText2,
                       onChanged: (String? value) {
                         conpswd = value;
                       },
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'Confirm Password',
-                        prefixIcon: Image(
+                        prefixIcon: const Image(
                           image: AssetImage('assets/Icon ionic-ios-lock.png'),
                         ),
-                        suffixIcon: Image(
-                          image: AssetImage('assets/Icon awesome-eye.png'),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _obscureText2 = !_obscureText2;
+                            });
+                          },
+                          child: const Image(
+                            image: AssetImage('assets/Icon awesome-eye.png'),
+                          ),
                         ),
                       ),
                     ),
@@ -133,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: Material(
-                      color: Colors.yellow[800],
+                      color: Colors.yellow[900],
                       elevation: 5.0,
                       borderRadius: BorderRadius.circular(8.0),
                       child: MaterialButton(

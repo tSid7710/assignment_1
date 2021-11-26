@@ -14,6 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String? email;
   String? password;
+  bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,17 +67,24 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 15.0),
                     child: TextField(
-                      obscureText: true,
+                      obscureText: _obscureText,
                       onChanged: (String? value) {
                         password = value;
                       },
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'Password',
-                        prefixIcon: Image(
+                        prefixIcon: const Image(
                           image: AssetImage('assets/Icon ionic-ios-lock.png'),
                         ),
-                        suffixIcon: Image(
-                          image: AssetImage('assets/Icon awesome-eye.png'),
+                        suffixIcon: GestureDetector(
+                          child: const Image(
+                            image: AssetImage('assets/Icon awesome-eye.png'),
+                          ),
+                          onTap: () {
+                            setState(() {
+                              _obscureText = !_obscureText;
+                            });
+                          },
                         ),
                       ),
                     ),
@@ -86,10 +94,10 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       TextButton(
                         onPressed: () {},
-                        child: const Text(
+                        child: Text(
                           'Use Mobile Number',
                           style: TextStyle(
-                            color: Colors.orange,
+                            color: Colors.yellow[900],
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
                           ),
@@ -109,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 5.0),
                     child: Material(
-                      color: Colors.yellow[800],
+                      color: Colors.yellow[900],
                       elevation: 5.0,
                       borderRadius: BorderRadius.circular(10.0),
                       child: MaterialButton(
