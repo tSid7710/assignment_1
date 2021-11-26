@@ -17,12 +17,12 @@ class ProductPage extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: 500,
-                  child: Image(
+                  child: const Image(
                     image: AssetImage('assets/Rectangle 23.png'),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                   child: Text(
                     'EyeVy',
                     style: TextStyle(
@@ -31,8 +31,8 @@ class ProductPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                   child: Text(
                     'Full Rim Round,Cat-eyed Anti Glare Frame(48 mm)',
                     style: TextStyle(
@@ -44,7 +44,7 @@ class ProductPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
-                    children: [
+                    children: const [
                       Text(
                         '₹219',
                         style: TextStyle(
@@ -111,7 +111,7 @@ class ProductPage extends StatelessWidget {
                   ],
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
